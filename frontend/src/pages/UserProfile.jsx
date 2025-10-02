@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import API_URL from '../../config/api';
-
 // Props esperadas:
 // - user: objeto con datos del usuario
 // - token: token de autenticación
@@ -93,7 +92,7 @@ const UserProfile = ({ user, token, isAuthenticated, onLogout, onClose, onOpenAu
 
   const handleUpdateProfile = async () => {
     try {
-      const response = await fetch(`${API_URL}/auth/register`, {
+      const response = await fetch(`${API_URL}/auth/me`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
