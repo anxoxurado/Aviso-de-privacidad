@@ -125,7 +125,7 @@ const UserProfile = ({ user, token, isAuthenticated, onLogout, onClose, onOpenAu
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/auth/change-password', {
+      const response = await fetch(`${API_URL}/auth/change-password`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -160,7 +160,7 @@ const UserProfile = ({ user, token, isAuthenticated, onLogout, onClose, onOpenAu
     if (!confirmPassword) return;
 
     try {
-      const response = await fetch('http://localhost:5000/api/auth/delete-account', {
+      const response = await fetch(`${API_URL}/auth/delete-account`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
