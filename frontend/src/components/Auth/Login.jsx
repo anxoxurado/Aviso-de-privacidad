@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import Register from './Register';
-import API_URL from '../config/api';
+import API_URL from '@/config/api';
 const Login = ({ onSwitchToRegister, onClose, onLoginSuccess }) => {
   const [formData, setFormData] = useState({
     email: '',
