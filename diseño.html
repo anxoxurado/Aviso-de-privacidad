@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MODA STYLE - Tienda de Ropa Online</title>
+    <link rel="stylesheet" href="estilo.css">
+    
+   
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-top">
+            🎉 ENVÍO GRATIS en pedidos superiores a $50 | 30% OFF en toda la colección de verano
+        </div>
+        <nav>
+            <div class="logo">MODA STYLE</div>
+            <ul class="nav-links">
+                <li><a href="#mujer">Mujer</a></li>
+                <li><a href="#hombre">Hombre</a></li>
+                <li><a href="#accesorios">Accesorios</a></li>
+                <li><a href="#ofertas">Ofertas</a></li>
+                <li><a href="#nuevo">Nuevo</a></li>
+                <li><a href="#privacidad" onclick="openConfig()">Privacidad</a></li>
+            </ul>
+            <div class="nav-icons">
+                <span>🔍</span>
+                <span>👤</span>
+                <span style="position: relative;">
+                    🛒
+                    <span class="cart-counter" id="cartCounter">0</span>
+                </span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Nueva Colección 2025</h1>
+            <p>Descubre las últimas tendencias en moda</p>
+            <a href="#productos" class="btn-primary">COMPRAR AHORA</a>
+        </div>
+    </section>
+
+    <!-- Categorías -->
+    <section class="categories">
+        <h2 class="section-title">Comprar por Categoría</h2>
+        <div class="category-grid">
+            <div class="category-card">
+                <div class="category-img" style="background: linear-gradient(45deg, #ff9a9e, #fecfef);"></div>
+                <h3>Ropa de Mujer</h3>
+            </div>
+            <div class="category-card">
+                <div class="category-img" style="background: linear-gradient(45deg, #a8edea, #fed6e3);"></div>
+                <h3>Ropa de Hombre</h3>
+            </div>
+            <div class="category-card">
+                <div class="category-img" style="background: linear-gradient(45deg, #ffecd2, #fcb69f);"></div>
+                <h3>Accesorios</h3>
+            </div>
+            <div class="category-card">
+                <div class="category-img" style="background: linear-gradient(45deg, #a1c4fd, #c2e9fb);"></div>
+                <h3>Calzado</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Productos Destacados -->
+    <section class="featured-products" id="productos">
+        <h2 class="section-title">Productos Destacados</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <span class="badge">NUEVO</span>
+                <div class="product-img"></div>
+                <div class="product-info">
+                    <h3 class="product-title">Vestido Floral de Verano</h3>
+                    <div class="product-price">
+                        $39.99
+                        <span class="old-price">$59.99</span>
+                    </div>
+                    <button class="add-to-cart" >Añadir al Carrito</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <span class="badge">-30%</span>
+                <div class="product-img"></div>
+                <div class="product-info">
+                    <h3 class="product-title">Camisa Casual Premium</h3>
+                    <div class="product-price">
+                        $45.99
+                        <span class="old-price">$65.99</span>
+                    </div>
+                    <button class="add-to-cart" >Añadir al Carrito</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img"></div>
+                <div class="product-info">
+                    <h3 class="product-title">Jeans Slim Fit</h3>
+                    <div class="product-price">$59.99</div>
+                    <button class="add-to-cart" >Añadir al Carrito</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <span class="badge">OFERTA</span>
+                <div class="product-img"></div>
+                <div class="product-info">
+                    <h3 class="product-title">Blazer Elegante</h3>
+                    <div class="product-price">
+                        $89.99
+                        <span class="old-price">$129.99</span>
+                    </div>
+                    <button class="add-to-cart" >Añadir al Carrito</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+            <!-- Mensaje flotante / banner de cookies -->
+        <div class="cookie-banner" id="banner" role="region" aria-label="Aviso de preferencias">
+        <strong>Uso de datos</strong>
+        <p>Para que estes mas informado sobre el uso de tu informacion te invitamos a que leas nuestra aviso de privaciadad.</p>
+        <div class="actions">
+        <button class="btn primary" id="btn-configurar" aria-haspopup="dialog" aria-controls="configurar">Leer</button>
+        <button class="btn" id="btn-cerrar">Cerrar</button>
+        </div>
+        </div>
+
+
+        <!-- Diálogo de configuración -->
+        <dialog id="configurar" aria-labelledby="config-title">
+        <div class="modal-head">
+        <h2 class="privacy-title">Aviso de Privacidad</h2>
+        <button class="close-x" id="btn-cerrar-modal" aria-label="Cerrar">×</button>
+        </div>
+        <div class="modal-body">
+            
+                <div class="privacy-section">
+                    <h3>1.Responsable:</h3>
+                    <p>ModaStyle S.A. de C.V., con domicilio en Av. Reforma 123, Ciudad de México, México, es responsable del tratamiento de sus datos personales conforme a lo establecido en la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP) y sus lineamientos aplicables.</p>
+                </div>
+
+                <div class="privacy-section">
+                    <h3>2.Datos que se tratan:</h3>
+                    <p>En ModaStyle recabamos datos personales de manera directa cuando usted nos los proporciona en tienda física, al realizar compras en línea o al suscribirse a nuestras promociones. Los datos que podemos recabar son:
+                    Identificación: nombre completo, correo electrónico, teléfono y domicilio.
+                    Pago y facturación: datos de tarjetas de pago, RFC y correo para envío de CFDI.
+                    Navegación: información técnica de su interacción en nuestro sitio web (cookies necesarias y, en su caso, de análisis y marketing).
+                    No se solicitarán datos personales sensibles salvo que sea estrictamente necesario y con su consentimiento expreso.</p>
+                </div>
+
+                <div class="privacy-section">
+                    <h3>3.Finalidades primarias:</h3>
+                    <p>Procesar compras de ropa y accesorios.
+                    Enviar productos adquiridos.
+                    Emitir comprobantes fiscales digitales (CFDI).
+                    Atender consultas y brindar servicio al cliente.
+                    Cumplir con disposiciones fiscales y legales vigentes.</p>
+                </div>
+
+                <div class="privacy-section">
+                    <h3>4.Finalidades secundarias (opcionales):</h3>
+                    <p>Enviar promociones y descuentos.
+                    Compartir novedades de ModaStyle.
+                    Realizar encuestas de satisfacción y análisis de tendencias de consumo. Usted puede manifestar su negativa para las finalidades secundarias en cualquier momento, sin que esto afecte la prestación de los servicios principales.</p>
+                </div>
+
+                <div class="privacy-section">
+                    <h3>5.Transferencias:</h3>
+                    <p>Sus datos podrán ser compartidos con terceros proveedores de servicios, como empresas de paquetería, plataformas de pago, servicios de facturación CFDI y proveedores de hospedaje en la nube. Estas transferencias se realizan únicamente para cumplir con las finalidades mencionadas y bajo acuerdos de confidencialidad y seguridad.</p>
+                </div>
+
+                <div class="privacy-section">
+                    <h3>6.Derechos ARCO:</h3>
+                    <p>Usted tiene derecho a conocer qué datos personales tenemos, para qué los utilizamos y las condiciones de su uso. También puede solicitar la rectificación de su información, cancelación u oponerse a su tratamiento.Usted puede revocar el consentimiento que nos haya otorgado para el tratamiento de sus datos personales en cualquier momento. Asimismo, puede solicitar que su información sea incluida en nuestro "Listado de Exclusión Publicitaria" para dejar de recibir comunicaciones con fines de mercadotecnia y publicidad.
+                    Para ejercer sus derechos ARCO, puede enviar una solicitud a nuestro Oficial de Privacidad al correo: <a href="a">privacidad@modastyle.com</a>
+                    o al teléfono <strong> +52 (55) 5555 5555.</strong>
+                    La solicitud deberá incluir: nombre completo, identificación oficial, descripción clara del derecho a ejercer y un medio de contacto para responder.Conforme a la ley, daremos respuesta a su solicitud en un plazo máximo de 20 días hábiles y, de resultar procedente, la haremos efectiva en un plazo máximo de 15 días hábiles posteriores a nuestra respuesta.</p>
+                </div>
+
+                <div class="privacy-section">
+                    <h3>7.Medidas de seguridad:</h3>
+                    <p>ModaStyle implementa medidas técnicas, administrativas y físicas para proteger sus datos contra accesos no autorizados, pérdida o alteración indebida, tales como:
+                    Cifrado de información en tránsito (HTTPS/TLS).
+                    Controles de acceso internos.
+                    Almacenamiento seguro en servidores certificados.
+                    Auditorías y pruebas de seguridad conforme a estándares internacionales como ISO/IEC 27001 y OWASP Top 10.</p>
+                </div>
+
+                <div class="privacy-section">
+                    <h3>8.Cookies y tecnologías similares:</h3>
+                    <p>Utilizamos cookies para mejorar su experiencia de navegación, recordar sus preferencias y analizar el tráfico del sitio. Puede configurar su navegador para rechazar cookies, aunque esto puede afectar la funcionalidad del sitio.</p>
+                </div>
+
+                <div class="privacy-section">
+                    <h3>9.Cambios en el Aviso de Privacidad:</h3>
+                    <p>ModaStyle podrá modificar este Aviso de Privacidad en cualquier momento. Las actualizaciones estarán disponibles en nuestra tienda en línea y en sucursales físicas, indicando la fecha de la última versión.</p>
+                </div>
+
+                <div class="privacy-section">
+                    <h3>10.Conservación de Datos:</h3>
+                    <p>Los datos personales se conservarán por el tiempo necesario para cumplir con las finalidades descritas en este Aviso. En el caso de comprobantes fiscales (CFDI), los datos se conservarán durante al menos 5 años conforme al Código Fiscal de la Federación.</p>
+                </div>
+
+                <div class="privacy-section">
+                    <h3>11.Autoridad Competente:</h3>
+                    <p>Si usted considera que su derecho a la protección de datos personales ha sido vulnerado, tiene el derecho de acudir a la autoridad federal competente. La autoridad garante en México es el Instituto Nacional de Transparencia, Acceso a la Información y Protección de Datos Personales (INAI).</p>
+                </div>
+
+
+              
+                <p class="muted"> <strong>Última actualización:</strong>  24/09/2025</p>
+        </dialog>
+
+
+
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <h2>Suscríbete a Nuestro Newsletter</h2>
+        <p>Recibe ofertas exclusivas y las últimas novedades</p>
+        <form class="newsletter-form" >
+            <input type="email" placeholder="Tu correo electrónico" required>
+            <button type="submit">Suscribirse</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Acerca de Nosotros</h3>
+                <p>MODA STYLE es tu destino para las últimas tendencias en moda. Ofrecemos calidad, estilo y precios accesibles.</p>
+                <div class="social-icons">
+                    <a href="#">f</a>
+                    <a href="#">t</a>
+                    <a href="#">i</a>
+                    <a href="#">y</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="#">Sobre Nosotros</a></li>
+                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#">Envíos</a></li>
+                    <li><a href="#">Devoluciones</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Categorías</h3>
+                <ul>
+                    <li><a href="#">Mujer</a></li>
+                    <li><a href="#">Hombre</a></li>
+                    <li><a href="#">Accesorios</a></li>
+                    <li><a href="#">Ofertas</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Atención al Cliente</h3>
+                <ul>
+                    <li>📧 info@modastyle.com</li>
+                    <li>📞 +1 234 567 890</li>
+                    <li>🕐 Lun-Vie: 9AM-6PM</li>
+                    <li>📍 Calle Moda 123, Ciudad</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Privacidad</h3>
+                <button class="bt_ap" onclick="openConfig()">Aviso de privacidad</button>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 MODA STYLE. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="funcionalidad.js">
+        
+    </script>
+</body>
+</html>
