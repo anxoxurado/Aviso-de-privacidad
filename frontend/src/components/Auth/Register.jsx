@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import AuthContainer, { PrivacyModal, TermsModal, DisclaimerModal } from './AuthContainer';
-import API_URL from '../../config/api';
+import API_URL from '../config/api';
 
 
 const Register = ({ onSwitchToLogin, onClose }) => {

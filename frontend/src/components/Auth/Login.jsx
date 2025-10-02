@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Register from './Register';
-import API_URL from '../../config/api';
+import API_URL from '../config/api';
 const Login = ({ onSwitchToRegister, onClose, onLoginSuccess }) => {
   const [formData, setFormData] = useState({
     email: '',
@@ -51,7 +51,7 @@ const Login = ({ onSwitchToRegister, onClose, onLoginSuccess }) => {
     setIsLoading(true);
 
     try {
-      const response = await fetch(`${API_URL}/auth/register`, {
+      const response = await fetch(`${API_URL}/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
