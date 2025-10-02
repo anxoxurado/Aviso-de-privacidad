@@ -23,7 +23,10 @@ app.use(hpp());
 
 // CORS
 app.use(cors({
-  origin: process.env.FRONTEND_URL,
+  origin: [
+    'http://localhost:5173',
+    'https://moda-style-frontend.onrender.com', // Tu URL de Render
+  ],
   credentials: true
 }));
 
