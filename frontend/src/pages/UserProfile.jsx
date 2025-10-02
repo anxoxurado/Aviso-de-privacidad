@@ -20,7 +20,9 @@ const UserProfile = ({ user, token, isAuthenticated, onLogout, onClose, onOpenAu
       ciudad: user?.direccion?.ciudad || '',
       estado: user?.direccion?.estado || '',
       codigoPostal: user?.direccion?.codigoPostal || ''
-    }
+    },
+    createdAt: user?.createdAt || '',
+    ultimoLogin: user?.ultimoLogin || ''
   });
 
   const [passwordData, setPasswordData] = useState({
@@ -465,7 +467,7 @@ const UserProfile = ({ user, token, isAuthenticated, onLogout, onClose, onOpenAu
                     </button>
                   </div>
                 </div>
-
+                {/*
                 <div className="border-t-2 pt-8">
                   <h3 className="text-xl font-bold text-gray-800 mb-4">Información de Seguridad</h3>
                   <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-6 mb-6">
@@ -478,7 +480,7 @@ const UserProfile = ({ user, token, isAuthenticated, onLogout, onClose, onOpenAu
                     <p className="text-green-700">{user?.createdAt ? new Date(user.createdAt).toLocaleDateString() : 'No disponible'}</p>
                   </div>
                 </div>
-
+                */}
                 <div className="border-t-2 pt-8">
                   <h3 className="text-xl font-bold text-red-600 mb-4">Zona Peligrosa</h3>
                   <div className="bg-red-50 border-2 border-red-300 rounded-xl p-6">

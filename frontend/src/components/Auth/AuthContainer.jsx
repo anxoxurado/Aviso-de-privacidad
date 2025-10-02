@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import Login from './Login';
 import Register from './Register';
-import { useAuth } from '../../context/AuthContext'; // importa el contexto
+import { useAuth } from '../../context/AuthContext';
+import SecureInput from '../common/SecureInput';
+import { useSecureForm } from '../../hooks/useSecureForm';
+import { sanitizeObject } from '../../utils/sanitize';
 
 // ==================== MODALES LEGALES ====================
 const PrivacyModal = ({ isOpen, onClose }) => {

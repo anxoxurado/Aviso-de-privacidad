@@ -1,13 +1,13 @@
 import User from '../models/User.js';
 import { generateToken } from '../utils/token.js';
 import { validationResult } from 'express-validator';
+import { logSecurityEvent } from '../middleware/audit.js';
 
 // @desc    Registrar usuario
 // @route   POST /api/auth/register
 // @access  Public
 export const register = async (req, res, next) => {
   try {
-    // Validar errores
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ 
@@ -18,7 +18,6 @@ export const register = async (req, res, next) => {
 
     const { nombre, email, password, telefono, aceptaTerminos, aceptaPrivacidad } = req.body;
 
-    // Crear usuario
     const user = await User.create({
       nombre,
       email,
@@ -28,7 +27,11 @@ export const register = async (req, res, next) => {
       aceptaPrivacidad
     });
 
-    // Generar token
+    await logSecurityEvent('REGISTER', req, {
+      userId: user._id,
+      email: user.email
+    }, 'low');
+
     const token = generateToken(user._id);
 
     res.status(201).json({
@@ -55,6 +58,11 @@ export const login = async (req, res, next) => {
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
+      await logSecurityEvent('LOGIN_FAILED', req, {
+        reason: 'Validation errors',
+        errors: errors.array()
+      }, 'low');
+      
       return res.status(400).json({ 
         success: false, 
         errors: errors.array() 
@@ -62,37 +70,48 @@ export const login = async (req, res, next) => {
     }
 
     const { email, password } = req.body;
-
-    // Verificar usuario
     const user = await User.findOne({ email }).select('+password');
 
     if (!user) {
+      await logSecurityEvent('LOGIN_FAILED', req, {
+        reason: 'User not found',
+        email
+      }, 'medium');
+      
       return res.status(401).json({
         success: false,
         message: 'Credenciales inválidas'
       });
     }
 
-    // Verificar si está bloqueado
     if (user.bloqueadoHasta && user.bloqueadoHasta > Date.now()) {
+      await logSecurityEvent('LOGIN_FAILED', req, {
+        reason: 'Account locked',
+        email
+      }, 'high');
+      
       return res.status(423).json({
         success: false,
         message: 'Cuenta temporalmente bloqueada por múltiples intentos fallidos'
       });
     }
 
-    // Verificar contraseña
     const isMatch = await user.matchPassword(password);
 
     if (!isMatch) {
-      // Incrementar intentos fallidos
       user.intentosFallidosLogin += 1;
       
       if (user.intentosFallidosLogin >= 5) {
-        user.bloqueadoHasta = Date.now() + 15 * 60 * 1000; // 15 minutos
+        user.bloqueadoHasta = Date.now() + 15 * 60 * 1000;
       }
       
       await user.save();
+      
+      await logSecurityEvent('LOGIN_FAILED', req, {
+        reason: 'Invalid password',
+        email,
+        attempts: user.intentosFallidosLogin
+      }, user.intentosFallidosLogin >= 5 ? 'high' : 'medium');
 
       return res.status(401).json({
         success: false,
@@ -100,13 +119,17 @@ export const login = async (req, res, next) => {
       });
     }
 
-    // Reset intentos fallidos
+    // Login exitoso
     user.intentosFallidosLogin = 0;
     user.bloqueadoHasta = undefined;
     user.ultimoLogin = Date.now();
     await user.save();
 
-    // Generar token
+    await logSecurityEvent('LOGIN_SUCCESS', req, {
+      userId: user._id,
+      email: user.email
+    }, 'low');
+
     const token = generateToken(user._id);
 
     res.json({

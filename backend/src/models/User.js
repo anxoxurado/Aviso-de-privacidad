@@ -64,13 +64,8 @@ const userSchema = new mongoose.Schema({
   },
   bloqueadoHasta: Date,
   ultimoLogin: Date,
-  createdAt: {
-    type: Date,
-    default: Date.now
-  }
-}, {
-  timestamps: true
-});
+}, { timestamps: true }
+);
 
 // Encriptar password antes de guardar
 userSchema.pre('save', async function(next) {
