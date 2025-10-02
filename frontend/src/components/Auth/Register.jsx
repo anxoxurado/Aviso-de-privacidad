@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import AuthContainer, { PrivacyModal, TermsModal, DisclaimerModal } from './AuthContainer';
+import API_URL from '../config/api';
 
 
 const Register = ({ onSwitchToLogin, onClose }) => {
@@ -113,7 +114,7 @@ const Register = ({ onSwitchToLogin, onClose }) => {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/auth/register', {
+      const response = await fetch(`${API_URL}/auth/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
